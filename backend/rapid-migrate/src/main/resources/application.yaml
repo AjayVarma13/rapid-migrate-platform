@@ -2,9 +2,25 @@ spring:
   application:
     name: rapid-migrate
 
-  autoconfigure:
-    exclude:
-      - org.springframework.boot.jdbc.autoconfigure.DataSourceAutoConfiguration
+  datasource:
+    url: jdbc:h2:mem:rapidmigrate
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+    show-sql: true
+
+  h2:
+    console:
+      enabled: true
 
 server:
   port: 8080
+
+logging:
+  level:
+    root: INFO
